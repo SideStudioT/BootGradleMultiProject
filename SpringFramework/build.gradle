@@ -1,0 +1,49 @@
+// Spring IO Platfrom 사용
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'io.spring.gradle:dependency-management-plugin:0.5.3.RELEASE'
+    }
+}
+
+// 하위 프로젝트 공통 설정 적용
+subprojects {
+
+    group 'org.sidestudio'
+    version '1.0-SNAPSHOT'
+
+    apply plugin: 'java'
+    apply plugin: 'io.spring.dependency-management'
+
+    // JDK 버전
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    // Compile 인코딩 설정
+    [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+    configurations.all {
+        exclude group: 'commons-logging', module: 'commons-logging'
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom 'io.spring.platform:platform-bom:2.0.2.RELEASE'
+        }
+    }
+
+    dependencies {
+
+        compile ('org.slf4j:jcl-over-slf4j')
+        compile ('org.slf4j:slf4j-api')
+        compile ('ch.qos.logback:logback-classic')
+        runtime ('org.codehaus.groovy:groovy-all')
+        testCompile ('junit:junit')
+    }
+}

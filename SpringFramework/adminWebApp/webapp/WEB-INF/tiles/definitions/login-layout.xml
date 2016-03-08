@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+    <!-- main 관련 페이지 -->
+    <definition name="login/login" extends="default-template">
+        <put-attribute name="title" expression="${title}"/>
+        <put-attribute name="body" value="/WEB-INF/views/login/login.jsp" />
+
+        <!-- Import css List -->
+        <put-list-attribute name="cssList" inherit="true"> <!-- inherit="true" 일 경우 뒤에 이어서 연결 시켜준다. List add() 함수와 같은 역활-->
+            <add-attribute value="/resources/css/login/login.css" /> <!-- local Location -->
+        </put-list-attribute>
+    </definition>
+</tiles-definitions>

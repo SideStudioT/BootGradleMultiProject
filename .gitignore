@@ -1,0 +1,16 @@
+# Java class files
+*.class
+
+# Intellij project files
+*.iml
+*.ipr
+*.iws
+.idea/
+META-INF/
+
+#Gradle
+.gradletasknamecache
+.gradle/
+build/
+bin/
+out/

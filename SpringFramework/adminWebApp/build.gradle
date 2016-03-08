@@ -1,0 +1,53 @@
+apply plugin: 'war'
+
+project.webAppDirName = 'webapp' // Web Resource direcoty 폴더명 정의
+
+// Gradle Profile 기능 구현
+// gradle -Pprofile=value 이와같은 형식으로 profile에 값을 줄수가 있다.
+sourceSets {
+
+    final String DEFAULT_PROFILE = 'local'
+    if (!project.hasProperty('profile') || !profile) {
+
+        ext.profile = DEFAULT_PROFILE
+    }
+
+    println "${profile}"
+
+    // profile별 resource 적용
+    main{
+
+        resources {
+            srcDir ("src/main/resources/${profile}")
+        }
+    }
+}
+
+dependencies {
+
+    // Spring Basic Library
+    compile ('org.springframework:spring-webmvc')
+
+    // Spring Security Library
+    compile ('org.springframework.security:spring-security-config')
+    compile ('org.springframework.security:spring-security-web')
+    compile ('org.springframework.security:spring-security-taglibs')
+
+    // Servlet
+    providedCompile ('javax.servlet:javax.servlet-api')
+
+    // jstl
+    compile ('javax.servlet:jstl')
+
+    // Spring ORM
+    compile ('org.springframework:spring-orm')
+    compile ('org.mybatis:mybatis:3.3.1')
+    compile ('org.mybatis:mybatis-spring:1.2.4')
+
+    // Spring Layout Template composition framework
+    compile ('org.apache.tiles:tiles-extras')
+
+    // Mysql Connector
+    compile ('mysql:mysql-connector-java')
+}
+

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.sidestudio.app.repository.SampleRepository">
+
+    <!-- 2016-03-05 | Logan Lee | 유저 테이블 전체 데이터 조회 -->
+    <select id="selectBookAllList" resultType="org.sidestudio.app.domain.Book">
+      SELECT
+        name,
+        price,
+        description
+      FROM
+        book
+    </select>
+
+    <!-- 2016-03-08 | Logan Lee | 유저 로그인시 체크  -->
+    <select id="selectUserInfoById" parameterType="map" resultType="org.sidestudio.app.domain.SessionUserDetails">
+      SELECT
+        id,
+        pw,
+        role,
+        phone,
+        name
+      FROM
+        user
+      WHERE
+        id = #{id}
+    </select>
+
+    <!-- 2016-03-05 | Logan Lee | 유저 테이블 데이터 저장 -->
+    <insert id="insertBook" parameterType="org.sidestudio.app.domain.Book">
+      INSERT INTO book
+        (name, price, description)
+      VALUES
+        (#{name}, #{price}, #{description});
+
+    </insert>
+</mapper>

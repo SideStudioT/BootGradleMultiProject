@@ -1,0 +1,4 @@
+rootProject.name = 'SpringFramework'
+
+// 하위 프로젝트 생성
+include 'adminWebApp'

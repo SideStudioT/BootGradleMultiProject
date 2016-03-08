@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+    <!-- Main Template Definitions -->
+    <definition name="default-template" template="/WEB-INF/tiles/templates/default-template.jsp">
+        <put-attribute name="title" value="Sample App" />
+        <put-attribute name="header" value="/WEB-INF/views/layouts/headers/default-header.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/views/layouts/footers/default-footer.jsp" />
+
+        <!-- Import css List -->
+        <put-list-attribute name="cssList">
+            <add-attribute value="/resources/vender/bootstrap-3.3.2/css/bootstrap.min.css"/> <!-- local Location -->
+            <add-attribute value="/resources/css/style.css" /> <!-- default css -->
+        </put-list-attribute>
+
+        <!-- Import js List -->
+        <put-list-attribute name="jsList">
+            <add-attribute value="https://code.jquery.com/jquery-1.12.1.min.js"/> <!-- CDN -->
+            <add-attribute value="/resources/vender/bootstrap-3.3.2/js/bootstrap.min.js"/> <!-- local Location -->
+        </put-list-attribute>
+    </definition>
+
+    <!-- static definition 설정 -->
+    <definition name="hello" extends="default-template">
+        <put-attribute name="title" expression="${title}" />
+        <put-attribute name="body" value="/WEB-INF/views/hello.jsp" />
+    </definition>
+
+
+</tiles-definitions>
